@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | centmaster</title>
+<title>js线程梳理 | centmaster</title>
 <link rel="shortcut icon" href="https://github.com/centmaster/favicon.ico?v=1555920271317">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://github.com/centmaster/styles/main.css">
@@ -66,22 +66,53 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              js线程梳理
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-01-25 ·
+                · 2019-04-22 ·
               </time>
+              
+                <a href="https://github.com/centmaster/tag/yIYci-4eq" class="post-tags">
+                  # js学习
+                </a>
               
             </div>
             
+              <div class="post-feature-image" style="background-image: url('https://user-gold-cdn.xitu.io/2019/3/31/169d1c40c27a173c?w=428&amp;h=252&amp;f=png&amp;s=35393')">
+              </div>
+            
             <div class="post-content">
-              <p>这是关于的页面，可以在这里向世界介绍你！</p>
+              <h5 id="进程线程">进程线程</h5>
+<p>进程是工厂，进程之间资源不共享</p>
+<p>线程是工人，同一个进程的多个线程协同完成任务，资源共享</p>
+<h5 id="浏览器是多进程的">浏览器是多进程的</h5>
+<p>主进程，第三方插件进程，GPU进程，浏览器渲染进程</p>
+<h5 id="浏览器的渲染进程是多线程的">浏览器的渲染进程是多线程的</h5>
+<p>GUI渲染线程，js引擎线程（与前者互斥），事件触发线程，定时触发线程，异步http请求线程</p>
+<h5 id="webworker">webworker</h5>
+<p>js仍是单线程的。js向引擎申请开一个子线程。引擎线程与worker通过postMessage通信</p>
+<h5 id="线程之间的关系">线程之间的关系</h5>
+<p>js分为同步任务和异步任务</p>
+<p>同步任务在主线程执行，形成一个执行栈</p>
+<p>一旦执行栈任务完成，就会读取任务列队，将可运行的异步任务添加到执行栈中</p>
+<h5 id="macrotask与microtask">macrotask与microtask</h5>
+<p>进行完一个宏线程后会先看下有没有微线程，有的话先执行完微线程，再进行下一个宏线程。</p>
+<p>宏线程：setTimeout	微线程：Promise</p>
 
             </div>
           </article>
         </div>
     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://github.com/centmaster/post/js-mo-kuai-hua-bi-ji">
+              <h3 class="post-title">
+                js模块化笔记
+              </h3>
+            </a>
+          </div>  
         
 
         
