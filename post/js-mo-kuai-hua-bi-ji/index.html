@@ -1,85 +1,94 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>js模块化笔记 | centmaster</title>
-<link rel="shortcut icon" href="https://github.com/centmaster/favicon.ico?v=1555933725024">
+<meta name="description" content="#YOLO #TOMYUMADDICTED #SIA">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://github.com/centmaster/favicon.ico?v=1555933930778">
 <link rel="stylesheet" href="https://github.com/centmaster/styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://github.com/centmaster">
-  <img class="avatar" src="https://github.com/centmaster/images/avatar.png?v=1555933725024" alt="">
-  </a>
-  <h1 class="site-title">
-    centmaster
-  </h1>
-  <p class="site-description">
-    #YOLO #TOMYUMADDICTED #SIA
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://github.com/centmaster">
+        <img src="https://github.com/centmaster/images/avatar.png?v=1555933930778" class="site-logo">
+        <h1 class="site-title">centmaster</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      #YOLO #TOMYUMADDICTED #SIA
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
   </div>
 </div>
 
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              js模块化笔记
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-04-22 ·
-              </time>
-              
-                <a href="https://github.com/centmaster/tag/yIYci-4eq" class="post-tags">
-                  # js学习
-                </a>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">js模块化笔记</h2>
+            <div class="post-date">2019-04-22</div>
             
-              <div class="post-feature-image" style="background-image: url('https://github.com/centmaster/post-images/js-mo-kuai-hua-bi-ji.jpg')">
+              <div class="feature-container" style="background-image: url('https://github.com/centmaster/post-images/js-mo-kuai-hua-bi-ji.jpg')">
               </div>
             
             <div class="post-content">
@@ -169,22 +178,44 @@ function require(modules, callback) {
 </code></pre>
 
             </div>
-          </article>
+            
+              <div class="tag-container">
+                
+                  <a href="https://github.com/centmaster/tag/yIYci-4eq" class="tag">
+                    js学习
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
         </div>
-    
-        
-
-        
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
       </div>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
   </body>
 </html>
