@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>js模块化笔记 | Gridea</title>
+<link rel="shortcut icon" href="/Users/kopchen/Documents/Gridea/output/favicon.ico?v=1555919720167">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="/Users/kopchen/Documents/Gridea/output/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="/Users/kopchen/Documents/Gridea/output">
+  <img class="avatar" src="/Users/kopchen/Documents/Gridea/output/images/avatar.png?v=1555919720167" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/Users/kopchen/Documents/Gridea/output//index.html" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/Users/kopchen/Documents/Gridea/output/archives/index.html" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/Users/kopchen/Documents/Gridea/output/tags/index.html" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/Users/kopchen/Documents/Gridea/output/post/about/index.html" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              js模块化笔记
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-04-22 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <h4 id="commonjs">CommonJS</h4>
+<p>CommonJS是一种使用广泛的JavaScript模范化管理，核心思想是通过require方法来同步地加载依赖的其他模块，通过module.exports导出需要暴露的接口</p>
+<h5 id="用法">用法</h5>
+<p>采用CommonJS导入及导出时的代码如下：</p>
+<pre><code class="language-javascript">// 导入
+const A = require('./a.js');
+fn();
+// 导出
+module.exports = A.fn;
+</code></pre>
+<h5 id="原理实现">原理实现</h5>
+<pre><code class="language-javascript">// a.js
+module.exports = '刚好遇见你';
+
+//b.js
+const fs = require('fs');
+// CommonJS简单实现
+function req(pathName) {
+    // content代表的是文件内容
+    let content = fs.readFileSync(pathName, 'utf8');
+    // 最后一个参数是函数的内容体
+    let fn = new Function('exports', 'require', 'module', '__filename', '__dirname', content+'\n return module.exports');
+    let module = {
+        exports: {}
+    };
+    // 函数执行就可以取到module.exports的值了
+    return fn(module.exports, req, module, __filename, __dirname);
+}
+const str = req('./a.js');  // 导入a模块
+console.log(str);   // '刚好遇见你'
+</code></pre>
+<h4 id="amd">AMD</h4>
+<p>AMD也是一种JavaScript模块化规范，与CommonJS最大的不同在于它采用异步的方式去加载依赖的模块。 AMD规范主要是为了解决针对浏览器环境的模块化问题，最具代表性的实现是RequireJS</p>
+<p>AMD的<strong>优点</strong></p>
+<ul>
+<li>可在不转换代码的情况下直接在浏览器里运行</li>
+<li>可加载多个依赖</li>
+<li>代码可运行在浏览器环境和Node环境中</li>
+</ul>
+<p>AMD的<strong>缺点</strong></p>
+<ul>
+<li>Js运行环境没有原生支持AMD，需要先导入实现了AMD的库才能正常使用(这里指的是RequireJS)</li>
+</ul>
+<h5 id="用法-2">用法</h5>
+<pre><code class="language-javascript">// define定义模块
+define('song', [], () =&gt; {
+    return '告白气球';
+});
+define('singer', ['song', 'album'], (song, album) =&gt; {  // 依赖了song和album模块
+    let singer = '周杰伦';
+    return `${singer}的${song}属于专辑《${album}》`;
+});
+define('album', [], () =&gt; {
+    return '床边故事';
+});
+// require使用模块
+require(['singer'], singer =&gt; {
+    console.log(singer);   // 周杰伦的告白气球属于专辑床边故事
+});
+</code></pre>
+<h5 id="原理实现-2">原理实现</h5>
+<p>RequireJS有两个方法，一个是define，另一个是require，所以首先我们先定义两个函数，看如下代码</p>
+<pre><code class="language-javascript">let factories = {};     // 管理一个关联对象，将模块名和函数关联起来
+// 定义模块define  三个参数：1.模块名 2.依赖 3.工厂函数
+function define(name, depend, factory) {
+    factories[name] = factory;
+    factory.depend = depend;    // 将依赖记到factory上
+}
+// 通过require使用模块
+function require(modules, callback) {
+    let result = modules.map(mod =&gt; {   // 返回一个结果数组
+        let factory = factories[mod];   // 拿到模块对应的函数
+        let exports;
+        let depend = factory.depend;    // 取到函数上的依赖 ['a']
+        
+        // require(['song','album'], function(song,album) {})  可能会有很多依赖
+        require(depend, () =&gt; {         // 递归require
+            exports = factory.apply(null, arguments);
+        });
+        return exports;     // exports得到的是函数返回的值  如：'告白气球' , ' 床边故事'
+    });
+    callback.apply(null, result);   //  result为一个结果数组，所以用apply
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/Users/kopchen/Documents/Gridea/output/post/hello-gridea/index.html">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
