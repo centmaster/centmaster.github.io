@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | centmaster</title>
+<title>why https? | centmaster</title>
 <meta name="description" content="#YOLO #TOMYUMADDICTED #SIA">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -85,13 +85,41 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">why https?</h2>
+            <div class="post-date">2019-04-03</div>
+            
+              <div class="feature-container" style="background-image: url('/post-images/why-https.JPG')">
+              </div>
             
             <div class="post-content">
-              <p>这是关于的页面，可以在这里向世界介绍你！</p>
+              <h3 id="解决了三个问题">解决了三个问题：</h3>
+<p>1.通信的安全性</p>
+<p>2.通信双方身份的真实性</p>
+<p>3.通信内容的完整性</p>
+<h5 id="如何解决这三个点">如何解决这三个点</h5>
+<p>安全性：</p>
+<p>Server端用非对称加密，将双方要进行的对称加密密钥加密，然后Browser端利用公钥解析，得到双方要通信时使用的对称加密密钥</p>
+<p>通信双方身份的真实性：</p>
+<p>证书。但怎么保证证书会不会伪造呢？颁发证书的人由更权威的人颁发证书，一层一层，到最权威的几个机构（CA）。12306的证书就是自己做的</p>
+<p>完整性：</p>
+<p>用哈希算法提取摘要，对摘要进行加密，根据摘要解密验证通信内容的完整性</p>
+<h5 id="https整体流程">https整体流程</h5>
+<p>1.客户端发送报文，包括ssl版本，可用算法列表，密钥长度。</p>
+<p>2.若服务端支持，返回相应的报文</p>
+<p>3.服务器发送证书到客户端</p>
+<p>4.客户端发送client key exchange报文，使用3中证书公钥匙加密（客户端用非对称加密中的公钥将对称加密中的密钥加密给服务端）</p>
+<p>5.服务端使用私钥解析好后返回相应，提示ssl通信环境搭建好</p>
+<p>6.开始正常的http通信</p>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://centmaster.github.io/tag/o2LR6SAia" class="tag">
+                    总结
+                  </a>
+                
+              </div>
             
             
 
