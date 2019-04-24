@@ -1,94 +1,85 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>why https? | centmaster</title>
-<meta name="description" content="#YOLO #TOMYUMADDICTED #SIA">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+<link rel="shortcut icon" href="https://centmaster.github.io/favicon.ico?v=1556116885427">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://centmaster.github.io/favicon.ico?v=1556116651568">
 <link rel="stylesheet" href="https://centmaster.github.io/styles/main.css">
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://centmaster.github.io">
-        <img src="https://centmaster.github.io/images/avatar.png?v=1556116651568" class="site-logo">
-        <h1 class="site-title">centmaster</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://centmaster.github.io">
+  <img class="avatar" src="https://centmaster.github.io/images/avatar.png?v=1556116885427" alt="">
+  </a>
+  <h1 class="site-title">
+    centmaster
+  </h1>
+  <p class="site-description">
+    #YOLO #TOMYUMADDICTED #SIA #LFC
+  </p>
+  <div class="menu-container">
+    
       
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
+        <a href="/" class="menu">
+          首页
+        </a>
       
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
+    
       
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
+        <a href="/archives" class="menu">
+          归档
+        </a>
       
-    </div>
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
-      
-    </div>
-    <div class="site-description">
-      #YOLO #TOMYUMADDICTED #SIA
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
+    
   </div>
 </div>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">why https?</h2>
-            <div class="post-date">2019-04-03</div>
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              why https?
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-04-03 ·
+              </time>
+              
+                <a href="https://centmaster.github.io/tag/o2LR6SAia" class="post-tags">
+                  # 总结
+                </a>
+              
+            </div>
             
-              <div class="feature-container" style="background-image: url('/post-images/why-https.JPG')">
+              <div class="post-feature-image" style="background-image: url('/post-images/why-https.JPG')">
               </div>
             
             <div class="post-content">
@@ -96,14 +87,14 @@
 <p>1.通信的安全性</p>
 <p>2.通信双方身份的真实性</p>
 <p>3.通信内容的完整性</p>
-<h5 id="如何解决这三个点">如何解决这三个点</h5>
+<h3 id="如何解决这三个点">如何解决这三个点</h3>
 <p>安全性：</p>
 <p>Server端用非对称加密，将双方要进行的对称加密密钥加密，然后Browser端利用公钥解析，得到双方要通信时使用的对称加密密钥</p>
 <p>通信双方身份的真实性：</p>
 <p>证书。但怎么保证证书会不会伪造呢？颁发证书的人由更权威的人颁发证书，一层一层，到最权威的几个机构（CA）。12306的证书就是自己做的</p>
 <p>完整性：</p>
 <p>用哈希算法提取摘要，对摘要进行加密，根据摘要解密验证通信内容的完整性</p>
-<h5 id="https整体流程">https整体流程</h5>
+<h3 id="https整体流程">https整体流程</h3>
 <p>1.客户端发送报文，包括ssl版本，可用算法列表，密钥长度。</p>
 <p>2.若服务端支持，返回相应的报文</p>
 <p>3.服务器发送证书到客户端</p>
@@ -112,44 +103,22 @@
 <p>6.开始正常的http通信</p>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://centmaster.github.io/tag/o2LR6SAia" class="tag">
-                    总结
-                  </a>
-                
-              </div>
-            
-            
-
-            
-
-          </div>
-
+          </article>
         </div>
-      </div>
-    </div>
+    
+        
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
 
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>
