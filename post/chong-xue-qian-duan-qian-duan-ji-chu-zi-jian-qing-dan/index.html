@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>why https? | centmaster</title>
+<title>重学前端----前端基础自检清单 | centmaster</title>
 <link rel="shortcut icon" href="https://centmaster.github.io/favicon.ico?v=1556714206896">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://centmaster.github.io/styles/main.css">
@@ -66,46 +66,53 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              why https?
+              重学前端----前端基础自检清单
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-04-03 ·
+                · 2019-04-29 ·
               </time>
-              
-                <a href="https://centmaster.github.io/tag/o2LR6SAia" class="post-tags">
-                  # 总结
-                </a>
               
             </div>
             
-              <div class="post-feature-image" style="background-image: url('/post-images/why-https.JPG')">
+              <div class="post-feature-image" style="background-image: url('https://centmaster.github.io/post-images/chong-xue-qian-duan-qian-duan-ji-chu-zi-jian-qing-dan.JPG')">
               </div>
             
             <div class="post-content">
-              <h3 id="解决了三个问题">解决了三个问题：</h3>
-<p>1.通信的安全性</p>
-<p>2.通信双方身份的真实性</p>
-<p>3.通信内容的完整性</p>
-<h3 id="如何解决这三个点">如何解决这三个点</h3>
-<p>安全性：</p>
-<p>Server端用非对称加密，将双方要进行的对称加密密钥加密，然后Browser端利用公钥解析，得到双方要通信时使用的对称加密密钥</p>
-<p>通信双方身份的真实性：</p>
-<p>证书。但怎么保证证书会不会伪造呢？颁发证书的人由更权威的人颁发证书，一层一层，到最权威的几个机构（CA）。12306的证书就是自己做的</p>
-<p>完整性：</p>
-<p>用哈希算法提取摘要，对摘要进行加密，根据摘要解密验证通信内容的完整性</p>
-<h3 id="https整体流程">https整体流程</h3>
-<p>1.客户端发送报文，包括ssl版本，可用算法列表，密钥长度。</p>
-<p>2.若服务端支持，返回相应的报文</p>
-<p>3.服务器发送证书到客户端</p>
-<p>4.客户端发送client key exchange报文，使用3中证书公钥匙加密（客户端用非对称加密中的公钥将对称加密中的密钥加密给服务端）</p>
-<p>5.服务端使用私钥解析好后返回相应，提示ssl通信环境搭建好</p>
-<p>6.开始正常的http通信</p>
+              <p>在梳理知识的过程中，发现了<a href="https://segmentfault.com/a/1190000018992363">前端工程师自检清单</a>
+初衷是为了梳理出一个知识导图，在梳理的过程中也一并把基础知识都回答下，不会的问题也都进行了认真的查阅保证回答无误</p>
+<!-- more -->
+<h4 id="变量和类型">变量和类型</h4>
+<p><em>JavaScript规定了几种语言类型</em>
+基本类型：null undefined boolean string number
+引用类型：object -- object function date array regExp
+新特性：Symbol</p>
+<p><em>Symbol类型在实际开发中的应用、可手动实现一个简单的Symbol</em>
+自己想了一个方法不知道可不可行，symbol里边自己有一个id的属性，这个属性用时间戳表示。
+比较的时候就比较id是否相同</p>
+<p><em>JavaScript中的变量在内存中的具体存储形式</em>
+基本类型 stack栈
+引用类型 stack栈（指针） heap堆</p>
+<p>7.基本类型对应的内置对象，以及他们之间的装箱拆箱操作
+8.理解值类型和引用类型
+9.null和undefined的区别
+10.至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型
+11.可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用
+12.出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法</p>
 
             </div>
           </article>
         </div>
     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://centmaster.github.io/post/she-ji-mo-shi-zong-jie">
+              <h3 class="post-title">
+                设计模式总结
+              </h3>
+            </a>
+          </div>  
         
 
         
